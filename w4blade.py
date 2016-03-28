@@ -3,6 +3,8 @@ wn=turtle.Screen()
 t1=turtle.Turtle()
 
 def drawblade():
+    t1.home()
+    t1.clear()
     turns=raw_input("set how many turns: ")
     grow=raw_input("set how much to grow bigger: ")
     angle=raw_input("set angles: ")
@@ -16,8 +18,7 @@ def drawblade():
     for i in range (in_turn):
         t1.fd(in_size)
         t1.right(in_angle)
-        t1.fd(in_size)
-        t1.right(in_angle)
-        in_size=in_size+in_grow
-
+        if(i%2==1):
+            in_size=in_size+in_grow    
+    
 drawblade()
