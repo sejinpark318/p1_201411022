@@ -82,6 +82,13 @@ def lab5():
 	w=float(weight)
 	h=float(height)
 	computeBMI()
+	
+	for i in range(1,6):
+   		print "*"*i
+ 	for i in range(1,6):
+    		print " "*(6-i)+"*"*i
+	for i in range(1,6):
+  		print " "*(6-i)+"*"*(i*2-1)
 
 def main():
 	lab4()
