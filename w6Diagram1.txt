@@ -1,0 +1,131 @@
+@startuml
+
+
+
+Multiples of 3 and 5
+
+
+
+start
+
+:
+sum=0;
+
+repeat
+
+    if (i%3==0 && i%5==0)
+
+        :print i;
+
+        :sum=sum+i;
+
+    else if (i%3==0)
+
+        :print i;
+
+        :sum=sum+i;
+
+    else if (i%5==0)
+
+        :print i;
+
+        :sum=sum+i;
+
+    else
+
+        :break;
+
+    endif
+
+repeat while (i<=1000)
+
+
+
+stop
+
+
+
+@enduml
+
+
+
+@startuml
+
+
+title leapyear
+
+
+
+
+start
+
+
+:insert the year;
+ 
+
+
+if (year%4==0)and ((year%100!=0) or (year%400==0))
+
+  :res="It's leap year";
+
+else
+  :res="not leap year";
+
+  
+endif
+
+
+:return res;
+
+
+
+
+stop
+
+
+@enduml
+
+
+
+@startuml
+
+
+title updown
+
+
+start
+
+
+:insert range;
+
+:player1 think a number;
+
+:player2 guess the number;
+
+
+repeat
+
+
+    if (num1==num2)
+
+        :res=player2 win!!;
+
+    else if (num1<num2)
+
+        :print down;
+
+    else if(num1>num2)
+
+        :print up;
+
+  
+  endif
+
+
+repeat while(res comesout)
+
+
+stop
+
+
+@enduml
