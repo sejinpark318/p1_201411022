@@ -23,8 +23,7 @@ ss2={(x2[0],y2[1]):score[0],(x2[0],y2[2]):score[1],(x2[0],y2[3]):score[2],(x2[0]
     (x2[4],y2[3]):score[8],(x2[4],y2[2]):score[9],(x2[4],y2[1]):score[10],(x2[4],y2[0]):score[11],
     (x2[3],y2[0]):score[12],(x2[2],y2[0]):score[13],(x2[1],y2[0]):score[14]}
 
-p1.goto(x1[0],y1[0])
-p2.goto(x2[0],y2[0])
+
 def sejinMarble():
     i=0
     j=0
@@ -431,4 +430,11 @@ def sejinMarble():
         res="draw!"
     
     return res
-sejinMarble()
+
+def lab7():
+    sejinMarble()
+def main():
+    lab7()
+
+if __name__=="__main__": 
+ 	main() 
