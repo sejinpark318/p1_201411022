@@ -42,10 +42,42 @@ def sumaveofJumin():
     return res
 
 
+def milkPercent(data):
+    sWater=0
+    sMilk=0
+    for i in data:
+        if(i[2]=="Yes"):
+            sMilk+=1
+
+    fsMilk= float(sMilk)
+    percent=fsMilk/len(data)*100
+    return "{0}%".format(percent)
+
+
+def scoreAve():
+    English=0
+    Math=0
+    for i in Score:
+        English+=i[0]
+        Math+=i[1]
+
+    fEnglish=float(English)
+    fMath=float(Math)
+    return (fEnglish/len(Score),fMath/len(Score))
+
+def Letitbe():
+    for i in range(len(Letitbe)):
+        for c in Letitbe[i].split():
+            if c not in count:
+                count[c]=1
+            else:
+                count[c]+=1
+    return count
+
+
 def lab10():  
 	import math
 	x=list()
-
 	closestSta()
 
 
@@ -76,10 +108,77 @@ def lab10():
 	('kangnam',279209,302551),
 	('songpa',325950,341530),
 	('kangdong',230851,232470))
-	
-	
 	sumaveofJumin()
 
+
+	allData=list()
+	allData=(("coffee","Water","Milk","Icecream"),
+	        ("Espresso","No","No","No"),
+	        ("Long Black","Yes","No","No"),
+	        ("Flat White","No","Yes","No"),
+	        ("Cappuccino","No","Yes","No"),
+	        ("Affogato","No","No","Yes"))
+	data=allData[1:6]
+	milkPercent(data)
+
+
+	allScore=list()
+	allScore=[("English","Math"),	
+	       (100,200),
+	       (200,200),
+	       (100,300)]
+
+	Score=allScore[1:]
+	scoreAve(Score)
+
+	Letitbe=list()
+	Letitbe=("When I find myself in times of trouble",
+	"Mother Mary comes to me",
+	"Speaking words of wisdom let it be",
+	"And in my hour of darkness",
+	"She is standing right in front of me",
+	"Speaking words of wisdom let it be",
+	
+	"Let it be let it be",
+	"Let it be let it be",
+	"Whisper words of wisdom let it be",
+	
+	"And when the broken-hearted people",
+	"Living in the world agree",
+	"There will be an answer let it be",
+	"For though they may be parted",
+	"There is still a chance that they will see",
+	"There will be an answer let it be",
+	
+	"Let it be let it be",
+	"Let it be let it be",
+	"Yeah there will be an answer let it be",
+	"Let it be let it be",
+	"Let it be let it be",
+	"Whisper words of wisdom let it be",
+	
+	"Let it be let it be",
+	"Ah let it be yeah let it be",
+	"Whisper words of wisdom let it be",
+	
+	"And when the night is cloudy",
+	"There is still a light that shines on me",
+	"Shine on until tomorrow let it be",
+	"I wake up to the sound of music",
+	"Mother Mary comes to me",
+	"Speaking words of wisdom let it be",
+	
+	"Let it be let it be",
+	"Let it be yeah let it be",
+	"Oh there will be an answer let it be",
+	"Let it be let it be",
+	"Let it be yeah let it be",
+	"Whisper words of wisdom let it be")
+
+	count=dict()
+	Letitbe()
+
+		
 def main(): 
     lab10() 
 
