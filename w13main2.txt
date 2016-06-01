@@ -19,7 +19,7 @@ def lab13():
 	doggy1=Dog('Dog')
 	doggy1.talk()
 
-	doggy2=ShiTzu('ShiiiiTzu')
+	doggy2=ShiTzuDog('ShiiiiTzu')
 	doggy2.talk()
 
 	doggy1=Maltese('Maaaltese')
