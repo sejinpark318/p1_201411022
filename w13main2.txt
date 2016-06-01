@@ -1,0 +1,32 @@
+class Dog(object):
+    def __init__(self,name):
+        self.name=name
+    def getName(self):
+        print "my dog name is ", self.name
+    def talk(self):
+        print "mung mung...", self.name
+
+class ShiTzuDog(Dog):
+    def talk(self):
+        print "si si...", self.name
+    
+class Maltese(Dog):
+    def talk(self):
+        print "mal mal...", self.name
+        
+
+def lab13():
+	doggy1=Dog('Dog')
+	doggy1.talk()
+
+	doggy2=ShiTzu('ShiiiiTzu')
+	doggy2.talk()
+
+	doggy1=Maltese('Maaaltese')
+	doggy1.talk()
+
+def main():
+	lab13()
+
+if __name__=="__main__":
+	main()
