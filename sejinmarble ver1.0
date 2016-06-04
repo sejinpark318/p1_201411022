@@ -1,0 +1,163 @@
+import turtle
+wn=turtle.Screen()
+t1=turtle.Turtle()
+t2=turtle.Turtle()
+p1=turtle.Turtle()
+
+t2.penup()
+t2.goto(-130,50)
+t2.pendown()
+t2.write('Sejin Marble!!\nBlocks has their own score, Click blocks which you like\nWhen you get more than 600point Game overs.')
+
+def getCoordsFromFile2(filename):
+    fin1=open(filename,'r')
+    mycoords=[]
+    test1=list()
+    for line in fin1:
+        word= line.split(',')
+        aRect=(float(word[0]),float(word[1].strip()))
+        mycoords.append(aRect)
+    fin1.close()
+    return mycoords
+
+def getCoordsFromFile4(filename):
+    fin1=open(filename,'r')
+    mycoords=[]
+    test1=list()
+    for line in fin1:
+        word= line.split(',')
+        aRect=[(float(word[0]),float(word[1])),(float(word[2]),float(word[3].strip()))]
+        mycoords.append(aRect)
+    fin1.close()
+    return mycoords
+
+def drawSquareWithCoords(coords):
+    t1.home()
+    t1.clear()
+    t1.penup()
+    t1.speed(10)
+    for i in range(len(coords)):
+        t1.goto(coords[i][0][0],coords[i][0][1])
+        t1.pendown()
+        t1.fd(coords[i][1][0]-coords[i][0][0])
+        t1.left(90)
+        t1.fd(coords[i][1][1]-coords[i][0][1])
+        t1.left(90)
+        t1.fd(coords[i][1][0]-coords[i][0][0])
+        t1.left(90)
+        t1.fd(coords[i][1][1]-coords[i][0][1])
+        t1.penup()
+        t1.home()
+
+def anoounceScore(score,scorename):
+    t1.penup()
+    t1.goto(-210,-200)
+    t1.write('start')
+    for i in range(len(score)-1):
+        t1.penup()
+        t1.goto(scorename[i])
+        t1.write(score[i])
+        t1.penup()
+        
+def isInRectangle(point,coord):
+    for i in range(len(mycoords)):
+        x1=mycoords[i][0][0]
+        x2=mycoords[i][1][0]
+        y1=mycoords[i][0][1]
+        y2=mycoords[i][1][1]
+    
+        xs=min(x1,x2)
+        xe=max(x1,x2)
+        ys=min(y1,y2)
+        ye=max(y1,y2)
+        x=point[0]
+        y=point[1]
+        if (xs <= x <= xe and ys <= y <= ye):
+            break
+    return (xs <= x <= xe and ys <= y <= ye)
+
+def whereInRectangle(point,coord):
+    for i in range(len(mycoords)):
+        x1=mycoords[i][0][0]
+        x2=mycoords[i][1][0]
+        y1=mycoords[i][0][1]
+        y2=mycoords[i][1][1]
+
+        xs=min(x1,x2)
+        xe=max(x1,x2)
+        ys=min(y1,y2)
+        ye=max(y1,y2)
+        x=point[0]
+        y=point[1]
+        if (xs <= x <= xe and ys <= y <= ye):
+            break
+    return i
+
+def ending(playername,recordlist):
+    import time
+    fin=open('record.txt','w')
+    timeEdited=time.strftime('%Y-%m-%d  %H:%M:%S')
+
+    for i in range(len(record)):
+        form="{0} scored {1}[{2}]".format(player,record[i],timeEdited)
+        fin.write(form)
+    fin.close()
+    fin=open('record.txt','r')
+    for line in fin:
+        t2.goto(-100,-50)
+        t2.write(line)
+    fin.close()
+    
+def mousegoto(x,y):
+    p1.setpos(x,y)
+    if isInRectangle(p1.pos(),mycoords):
+        a= whereInRectangle(p1.pos(), mycoords)
+        urscore.append(score[a-1])
+        sum=0
+        for i in range(len(urscore)):
+            sum+=urscore[i]
+        if sum<600:
+            p1.write(sum)
+        else:
+            record.append(sum)
+            anoounceScore(score,scorename)        
+            ending(player,record)
+            p1.write("GameOver")
+            
+            
+def addMouse():
+    wn.onclick(mousegoto)
+
+
+def gamePlay():
+    import turtle
+    import time
+
+    addMouse()
+    
+    wn.listen()
+    turtle.mainloop()
+    
+def sejinMarble():
+    
+    gamePlay()
+
+player=raw_input("What your name?")
+getCoordsFromFile2('scorename.txt')
+scorename=getCoordsFromFile2('scorename.txt')
+
+getCoordsFromFile4('polygon.txt')
+mycoords=getCoordsFromFile4('polygon.txt')
+
+drawSquareWithCoords(mycoords)
+
+score=[50,100,70,150,30,100,50,200,70,100,30,150,70,20,170,0]
+
+
+
+t1.hideturtle()
+
+urscore=list()
+record=list()
+
+sejinMarble()
